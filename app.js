@@ -2,6 +2,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const http = require('http');
 const socketIO = require('socket.io');
+const sgMail = require('@sendgrid/mail');
+sgMail.setApiKey(process.env.SENDGRID_API_KEY)
 
 const PORT = process.env.PORT || 80;
 
@@ -27,6 +29,22 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/', (req, res, next) => {
   res.json({ message: 'Hey! This is your server response!' });
+  next();
+});
+
+app.get('/login', (req, res, next) => {
+  const msg = {
+    to: 'jc.campbellg@gmail.com',
+    from: 'jc.campbellg@gmail.com',
+    subject: 'Sending with SendGrid is Fun',
+    text: 'and easy to do anywhere, even with Node.js',
+    html: '<strong>and easy to do anywhere, even with Node.js</strong>',
+  };
+  sgMail.send(msg).then(() => {
+    console.log('Email sent')
+  }).catch((error) => {
+    console.error(error)
+  });
   next();
 });
 
