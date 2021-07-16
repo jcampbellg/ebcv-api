@@ -41,9 +41,9 @@ app.get('/login', (req, res) => {
     html: '<strong>and easy to do anywhere, even with Node.js</strong>',
   };
   sgMail.send(msg).then(() => {
-    response.json({ message: "Email Sent" });
+    res.json({ message: "Email Sent" });
   }).catch((error) => {
-    response.status(500).send({
+    res.status(500).send({
       message: "Error sending email",
       error,
     });
