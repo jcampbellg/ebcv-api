@@ -32,7 +32,7 @@ app.get('/', (req, res, next) => {
   next();
 });
 
-app.get('/login', (req, res, next) => {
+app.get('/login', (req, res) => {
   const msg = {
     to: 'jc.campbellg@gmail.com',
     from: 'jc.campbellg@gmail.com',
@@ -41,11 +41,14 @@ app.get('/login', (req, res, next) => {
     html: '<strong>and easy to do anywhere, even with Node.js</strong>',
   };
   sgMail.send(msg).then(() => {
-    console.log('Email sent')
+    response.json({ message: "Email Sent" });
   }).catch((error) => {
+    response.status(500).send({
+      message: "Error sending email",
+      error,
+    });
     console.error(error)
   });
-  next();
 });
 
 // END API ROUTES
