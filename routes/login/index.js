@@ -19,8 +19,9 @@ router.post('/', (req, res) => {
     email: email,
     code: {
       time: code,
-      expire: moment(new Date()).add(1, 'days').format('YYYY-MM-DD')
-    }
+      expire: moment(new Date()).add(5, 'minutes').format('YYYY-MM-DD')
+    },
+    lastLogin: moment(new Date())
   };
 
   User.findOneAndUpdate({email: email}, userData, {

@@ -24,6 +24,11 @@ const UserSchema = new mongoose.Schema({
       unique: false,
     }
   },
+  lastLogin: {
+    type: Date,
+    required: [true, "Please provide login date"],
+    unique: false,
+  }
 });
 
 // export UserSchema
