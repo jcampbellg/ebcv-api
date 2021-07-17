@@ -27,7 +27,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // API ROUTES
-app.use('/', require('./routes/routes'));
+app.use('/', require('./routes'));
 
 // SERVER
 app.set('port', PORT);

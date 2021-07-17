@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
-router.get('/', require('./index'));
-router.post('/login', require('./login'));
+router.post('/', (req, res) => {
+  res.json({message: 'hi'});
+});
 
 module.exports = router;

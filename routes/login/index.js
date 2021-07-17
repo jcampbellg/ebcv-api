@@ -1,12 +1,12 @@
 const express = require('express');
 const router = express.Router();
 const uniqid = require('uniqid');
-const User = require('../db/userModel');
+const User = require('../../db/userModel');
 const moment = require('moment');
 const sgMail = require('@sendgrid/mail');
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
-router.post('/login', (req, res) => {
+router.post('/', (req, res) => {
   const code = uniqid();
   const email = req.body.email;
   const msg = {
