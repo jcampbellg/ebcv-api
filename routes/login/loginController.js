@@ -5,5 +5,7 @@ const router = express.Router();
 router.use('/', require('./index'));
 // /login/validate
 router.use('/validate', require('./validate'));
+// login/user
+router.use('/user', require('./user'));
 
 module.exports = router;
