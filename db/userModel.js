@@ -23,11 +23,11 @@ const UserSchema = new mongoose.Schema({
       required: [true, "Please provide expiration date"],
       unique: false,
     }
-  },
-  lastLogin: {
-    type: Date,
-    required: [true, "Please provide login date"],
-    unique: false,
+  }
+}, {
+  timestamps: {
+    createdAt: 'joinAt',
+    updatedAt: 'lastLogin'
   }
 });
 

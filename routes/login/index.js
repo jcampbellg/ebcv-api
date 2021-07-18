@@ -20,8 +20,7 @@ router.post('/', (req, res) => {
     code: {
       time: code,
       expire: moment(new Date()).add(5, 'minutes').format('YYYY-MM-DD')
-    },
-    lastLogin: moment(new Date())
+    }
   };
 
   User.findOneAndUpdate({email: email}, userData, {
