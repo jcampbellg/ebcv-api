@@ -10,7 +10,7 @@ async function dbConnect() {
         useFindAndModify: false
       }
     ).then(() => {
-      console.log("Successfully connected to MongoDB Atlas!");
+      console.log("Successfully connected to MongoDB Atlas! TEST");
     }).catch((error) => {
       console.log("Unable to connect to MongoDB Atlas!");
       console.error(error);
